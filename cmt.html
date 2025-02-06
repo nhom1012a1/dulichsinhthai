@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment with Star Rating</title>
+<style>
+        p {
+            font-size: 40px;
+        }
+    </style>
+<p><a href="index.html"> <strong> < </strong></a> </p>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    .comment-section {
+      max-width: 600px;
+      margin: auto;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .comments {
+      margin-top: 20px;
+    }
+    .comment {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .comment-author {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .star-rating {
+      display: flex;
+      margin: 10px 0;
+    }
+    .star {
+      font-size: 24px;
+      color: #ddd;
+      cursor: pointer;
+    }
+    .star.selected {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <div class="comment-section">
+    <h2> Đánh giá trang web</h2>
+    <input id="name-input" type="text" placeholder="Nhập Tên">
+    <textarea id="comment-input" placeholder="Viết Đánh Giá Tại Đây..."></textarea>
+    
+    <div class="star-rating" id="star-rating">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+    
+    <button onclick="saveComment()">Đánh giá</button>
+    <div class="comments" id="comments-container"></div>
+  </div>
+
+  <script>
+    let selectedRating = 0;
+
+    // Handle star selection
+    document.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        updateStarSelection();
+      });
+    });
+
+    function updateStarSelection() {
+      document.querySelectorAll('.star').forEach(star => {
+        star.classList.toggle('selected', star.getAttribute('data-value') <= selectedRating);
+      });
+    }
+
+    // Load existing comments from Local Storage
+    window.onload = loadComments;
+
+    function loadComments() {
+      const comments = JSON.parse(localStorage.getItem('comments')) || [];
+      const commentsContainer = document.getElementById('comments-container');
+      commentsContainer.innerHTML = ''; // Clear container
+      comments.forEach(({ name, comment,rating }) => {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        
+
+        const authorDiv = document.createElement('div');
+        authorDiv.className = 'comment-author';
+        authorDiv.textContent = `${name} : ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`;
+
+        const textDiv = document.createElement('div');
+        textDiv.textContent = comment;
+
+        commentDiv.appendChild(authorDiv);
+        commentDiv.appendChild(textDiv);
+        commentsContainer.appendChild(commentDiv);
+      });
+    }
+
+    function saveComment() {
+      const nameInput = document.getElementById('name-input');
+      const commentInput = document.getElementById('comment-input');
+      const name = nameInput.value.trim();
+      const commentText = commentInput.value.trim();
+
+      if (!name || !commentText || selectedRating === 0) {
+        alert('Vui lòng nhập đầy đủ tên, bài viết đánh giá và đánh giá sao');
+        return;
+      }
+
+      // Save to Local Storage
+      const comments = JSON.parse(localStorage.getItem('comments')) || [];
+      comments.push({ name, comment: commentText, rating: selectedRating });
+      localStorage.setItem('comments', JSON.stringify(comments));
+
+      // Clear inputs and reload comments
+      nameInput.value = '';
+      commentInput.value = '';
+      
+      updateStarSelection();
+      loadComments();
+    }
+  </script>
+
+
+</body>
+</html>

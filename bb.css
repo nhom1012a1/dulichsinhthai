@@ -1,0 +1,28 @@
+body, h1, h2, p, ul, li {margin: 0;padding-left: 0;list-style: none;}
+body {font-family: Arial, sans-serif;line-height: 1.6;color: black;background-color: bluewhite;}
+header { background-color: #2e7d67; color: skyblue;padding: 0;}
+header .container {display: flex;jusify-content: space-between;align-items: center;max-width: 1200px;margin: 0 auto;padding: 0 20px;}
+header h1 {font-size: 30px;color:#002d5c }
+header nav ul {display: flex;justfy-content: center;align-items:center;gap: 40px; padding: 0; background-color: #e0f7fa; border-bottom: 1px solid #b2ebf2;}
+header nav a {color: bluered;text-decoration: none;color: skyblue; font-size: 20px; font-weight: 500; transition: color 0.3s ease;}
+header nav a:hover {text-decoration: underline;}
+#hero {text-align: center;padding: 40px 20px;background-color: #d6f0ec;color: #2e7d67;}
+#hero h2 {font-size: 28px;margin-bottom: 10px;}
+#hero p {font-size: 18px;}
+.container {max-width: 1200px;margin: 0 auto;padding: 20px;background-color:  #e0f7fa;border-radius: 8px;box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);margin-bottom: 20px;}
+.container h2 {font-size: 24px;margin-bottom: 15px;color: skyblue;
+.container p {margin-bottom: 15px;font-size: 16px;}
+.container ul {padding-left: 20px;}
+.container ul li {margin-bottom: 10px;font-size: 16px;}
+footer {background-color: #2e7d67;color: blueviolet;padding: 20px;text-align: center;}
+footer h2 {margin-bottom: 10px;font-size: 20px;}
+footer p {margin-bottom: 5px;font-size: 14px;}
+@media (max-width: 768px) {
+header .container {flex-direction: column; text-align: center;}
+#hero h2 {font-size: 24px;}
+    .container {padding: 15px;}
+}
+header .container {
+    flex-direction: row; 
+    text-align: left; 
+}

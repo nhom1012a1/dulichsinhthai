@@ -1,0 +1,23 @@
+ <audio id="background-music" loop>
+  <source src="Vũ nông dân nhạc gốc.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  const audio = document.getElementById("background-music");
+
+  // Bắt đầu phát nếu có trạng thái lưu trữ
+  if (localStorage.getItem("musicPlaying") === "true") {
+    audio.currentTime = localStorage.getItem("musicTime") || 0;
+    audio.play().catch(() => {});
+  }
+
+  // Lưu trạng thái phát nhạc
+  audio.addEventListener("play", () => localStorage.setItem("musicPlaying", "true"));
+  audio.addEventListener("pause", () => localStorage.setItem("musicPlaying", "false"));
+
+  // Lưu thời gian nhạc
+  setInterval(() => {
+    localStorage.setItem("musicTime", audio.currentTime);
+  }, 1000);
+</script>
