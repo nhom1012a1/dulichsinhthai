@@ -10,6 +10,7 @@
     height: 80px;
     position: relative;
     width: 100%;
+    box-sizing: border-box;
     transition: all 0.3s ease;
 }
 
