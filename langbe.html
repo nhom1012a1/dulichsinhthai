@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khu du lịch Làng Bè</title>
     <link rel="stylesheet" href="bb.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -34,21 +35,39 @@
 
 
     <header>            <h1>Khu du lịch Làng Bè</h1> <iframe src="music.html" style="display:none;"></iframe>
-        <div class="container">
+    </header>
 
-            <nav>
-                <ul>
+  <!-- Phần header -->
+  <div class="headercon">
+      <!--Nút menu-->
+      <button class="menu-toggle">
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="sidebar">
+          <button class="close-btn">&times;</button>
+          <ul>
                     <li><a href="index.html"> Trang Chủ</a></li>
                     <li><a href="#about">Giới Thiệu</a></li>
                     <li><a href="#activities">Lịch Trình</a></li>
                     <li><a href="#price">Giá Vé</a></li>
-                    <li><a href="#include">Liên Hệ</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
                     <li><a href="lanvuong.html">Địa điểm trước</a></li>
                     <li><a href="hathao.html">Địa điểm tiếp theo</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+          </ul>
+      </div>
+      <!---->
+      <nav>
+          <ul>
+                    <li><a href="index.html"> Trang Chủ</a></li>
+                    <li><a href="#about">Giới Thiệu</a></li>
+                    <li><a href="#activities">Lịch Trình</a></li>
+                    <li><a href="#price">Giá Vé</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                    <li><a href="lanvuong.html">Địa điểm trước</a></li>
+                    <li><a href="hathao.html">Địa điểm tiếp theo</a></li>
+          </ul>
+      </nav>
+  </div>
 
     <section id="hero">
         <h2>Trải nghiệm vui chơi, ẩm thực sông nước</h2>
@@ -130,5 +149,7 @@
             <p>Email: canawanfd@gmail.com</p>
         </div>
     </footer>
+<button id="scrollToTop">^</button>
+<script src="script.js"></script>
 </body>
 </html>
