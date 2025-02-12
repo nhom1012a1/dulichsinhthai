@@ -162,8 +162,8 @@ nav ul li a:hover {
 /* scrollToTop */
 #scrollToTop {
     position: fixed;
-    bottom: 20px;
-    right: 15px;
+    bottom: 40px;
+    right: 20px;
     width: 40px;
     height: 40px;
     background-color: rgba(255, 255, 255, 0.6);
